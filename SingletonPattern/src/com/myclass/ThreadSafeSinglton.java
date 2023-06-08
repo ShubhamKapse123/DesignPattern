@@ -1,6 +1,8 @@
 package com.myclass;
 
-public class ThreadSafeSinglton {
+import java.io.Serializable;
+
+public class ThreadSafeSinglton implements Serializable {
 private static ThreadSafeSinglton threadSafeSinglton;
 	
 	private ThreadSafeSinglton() {
@@ -19,4 +21,15 @@ private static ThreadSafeSinglton threadSafeSinglton;
 		
 		return threadSafeSinglton;
 	}
+
+	
+	public Object readResolve(){
+		return threadSafeSinglton;
+	}
+	
+// @Override
+// protected Object clone() throws CloneNotSupportedException {
+// 	return super.clone();
+// }
+
 }

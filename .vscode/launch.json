@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DestroySinglton",
+            "request": "launch",
+            "mainClass": "com.myclass.DestroySinglton",
+            "projectName": "SingletonPattern"
+        }
+    ]
+}
