@@ -30,6 +30,7 @@ private static ThreadSafeSinglton threadSafeSinglton;
 // @Override
 // protected Object clone() throws CloneNotSupportedException {
 // 	return super.clone();
+// return threadSafeSinglton;
 // }
 
 }

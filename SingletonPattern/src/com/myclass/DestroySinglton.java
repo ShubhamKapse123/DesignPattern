@@ -37,7 +37,7 @@ ous.writeObject(s1);
 ObjectInputStream ois= new ObjectInputStream(new FileInputStream("abc.ob"));
 ThreadSafeSinglton s2=(ThreadSafeSinglton)ois.readObject();
 
-//System.out.print(s1.equals(s2));
+System.out.print(s1.equals(s2));
 
 // ThreadSafeSinglton s3=(ThreadSafeSinglton)s1.clone();
 
