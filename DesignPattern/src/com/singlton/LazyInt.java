@@ -1,4 +1,4 @@
-package com.myclass;
+package com.singlton;
 
 public class LazyInt {
 /*step 1: Make Constructor should be private

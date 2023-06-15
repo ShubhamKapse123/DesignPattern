@@ -1,4 +1,4 @@
-package com.myclass;
+package com.singlton;
 
 import java.io.Serializable;
 

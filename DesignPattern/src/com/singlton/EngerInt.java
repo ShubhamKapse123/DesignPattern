@@ -1,4 +1,4 @@
-package com.myclass;
+package com.singlton;
 
 public class EngerInt {
 	//Object is create once at the time of class load
