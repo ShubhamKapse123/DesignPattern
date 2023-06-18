@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Client",
+            "request": "launch",
+            "mainClass": "com.abstrackfactorypattern.Client",
+            "projectName": "SingletonPattern (2)"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Client",
+            "request": "launch",
+            "mainClass": "com.factorypattern.Client",
+            "projectName": "SingletonPattern (2)"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - DestroySinglton",
             "request": "launch",
             "mainClass": "com.myclass.DestroySinglton",
