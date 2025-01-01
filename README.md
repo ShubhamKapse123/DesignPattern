@@ -1,5 +1,33 @@
 ## Design Pattern Summary/Review Notes
+***
+**GOF Pattern Catalog**
+- **Creational Patterns** - Which is use for instantiate the single object or multiple object all
+about the creation of object.
+1. Singleton
+2. Factory
+3. Abstract Factory
+4. Builder
+5. Prototype
 
+- **Structural Patterns** - Provide manner relationship between the classes.
+1. Adapter
+2. Bridge
+3. Flyweight
+4. Decorator
+5. Proxy
+
+- **Behavioral Patterns** - which define how communication happened between object and classes.
+1. Command 
+2. Interpreter
+3. Template Method
+4. Observer
+5. Visitor
+---
+**Java EE Pattern Catalog**
+
+Presentation Layer -> Integration Layer -> Service Layer -> Data Access Layer
+
+***
 #### Singleton
 
 A singleton pattern is an object creational pattern that allows our application to create one and only one instance of a particular class, no matter how many times that class is used in our application.
@@ -14,7 +42,7 @@ UML
 
 Sample Code:
 
-```
+```Java
 public class DateUtil implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
@@ -73,7 +101,7 @@ UML:
 Another example is a pizza store. A pizza store delivers different types of pizzas.We will a parent interface which is implemented by the veg pizza cheese pizza and meat pizza. The pizza store need not worry about how to create each of these pizzas.lt simply asked the pizza factory to deliver the type of pizza it wants or to create a type of pizza it wants.so that it can give it to the customer or it can deliver it to the customer. The pizza factory hides the complexity of creating the different types of pizzas from the pizza store.
 
 Sample Code:
-```
+```Java
 public class PizzaFactory {
 
 public static Pizza createPizza(String type) {
@@ -116,7 +144,7 @@ It simply creates the factory we need. when we have multiple factories we see in
 UML:
 
 Sample Code:
-```
+```java
 public class DaoFactory Producer {
 
 public static DaoAbstractFactory produce(String factoryType) {
@@ -160,7 +188,7 @@ You will do all that by creating one single circle and one single rectangle he w
 UML:
 
 Sample Code:
-```
+```java
 public class ShapeFactory (
 
 private static Map<String, Shape> shapes = new HashMap<>();
@@ -202,7 +230,7 @@ The template method pattern is a behavioural pattern. And as the name itself say
 For example we have a data renderer class which can read the data, process the data and then render or display that data to the end user.But in our application we want to render the data in the same way no matter in which format the data is coming in that is if it is xml data or if it is CSV data. We want to render it using the render method in the base class reading the data and processing that data is up to the child classes. The child classes can override the readData and the processData.But we want to provide a base template method with all the implementation in it in that data renderer superclass. This pattern is called template method, as we are providing a template for a particular method from the parent class that should be used by the child classes.
 
 Code Sample:
-```
+```java
 public abstract class DataRenderer{
 public void render(){
 
@@ -232,7 +260,7 @@ findWeather. By passing in a city you can get the weather and we have an impleme
 
 That is where an adapter comes in. We will implement an adapter which will take the zip code. The weather Ul will invoke the find Temperature Method on the WeatherAdapter it will pass in the zip code. The weather adapter is responsible for looking up for the
 appropriate city that matches the zip code and hen invoke the weather finder, take the results and return the results back to the weather Ul. So it exactly acts like a power adapter. It takes the inputs from the class that wants to use another class because the inputs here are different from what the other side of the relationship expects.
-```
+```java
 public class WeatherAdapter {
 
 public int find Temperature(int zipCode) {
@@ -272,7 +300,7 @@ The person need not touch the television or he need not know how to perform the 
 The receiver here the television can change the implementation of how the on and off should be performed without impacting the remote control and the person.
 
 Sample Code:
-```
+```java
 public class Remote Control{
 
 private Command command;
@@ -294,7 +322,7 @@ At runtime, we can dynamically add all these toppings using a pizza decorator as
 The client asks for a cheese pizza. We can ask the cheese pizza decorator to decorate the plain base pizza with cheese and with veggies as required. The pizza here is the component the plain pizza is a concrete or a base component. The decorator is the pizza decorator and these two are concrete decorators. Both the veggie pizza decorator and the cheese pizza decorator are called concrete decorators so you are going to implement all of that in the next few lectures.
 
 Sample Code:
-```
+```java
 public class PizzaShop{
 
 public static void main(String args[]){

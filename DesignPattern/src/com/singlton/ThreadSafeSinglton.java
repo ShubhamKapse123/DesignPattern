@@ -2,9 +2,9 @@ package com.singlton;
 
 import java.io.Serializable;
 
-public class ThreadSafeSinglton implements Serializable {
-private static ThreadSafeSinglton threadSafeSinglton;
-	
+public class ThreadSafeSinglton implements Serializable,Cloneable{
+    private static volatile  ThreadSafeSinglton threadSafeSinglton;
+
 	private ThreadSafeSinglton() {
 		
 	}
@@ -26,11 +26,11 @@ private static ThreadSafeSinglton threadSafeSinglton;
 	public Object readResolve(){
 		return threadSafeSinglton;
 	}
-	
-// @Override
-// protected Object clone() throws CloneNotSupportedException {
-// 	return super.clone();
-// return threadSafeSinglton;
-// }
+	// is should not clone the singleton pattern
+	 @Override
+	 protected Object clone() throws CloneNotSupportedException {
+	  throw new CloneNotSupportedException();
+	 }
 
 }
+
