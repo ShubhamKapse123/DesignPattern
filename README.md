@@ -14,50 +14,39 @@ UML
 
 Sample Code:
 
-'public class DateUtil implements Serializable, Cloneable {
+```
+public class DateUtil implements Serializable, Cloneable {
 
-private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-private static volatile DateUtil instance,
+    private static volatile DateUtil instance;
 
-private DateUtil() {
+    private DateUtil() {
 
+    }
+
+    public static DateUtil getInstance() {
+        if (instance == null) {
+            synchronized (DateUtil.class) {
+                if (instance == null) {
+                    instance = new DateUtil();
+                }
+            }
+        }
+        return instance;
+    }
+
+    protected Object readResolve() {
+        return instance;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException();
+    }
 }
-
-public static DateUtil getInstance() {
-
-if (instance == null) {
-
-synchronized (DateUtil.class) {
-
-if (instance == null) {
-instance = new DateUtil();
-
 }
-
-1
-
-}
-
-return instance,
-
-}
-
-protected Object readResolve() {
-
-return instance,
-
-}
-
-@Override
-
-n{ protected Object clone() throws CloneNotSupportedException {
-
-throw new Clone Not SupportedException();
-
-}
-
-}'
+```
 
 #### Factory
 
@@ -84,7 +73,7 @@ UML:
 Another example is a pizza store. A pizza store delivers different types of pizzas.We will a parent interface which is implemented by the veg pizza cheese pizza and meat pizza. The pizza store need not worry about how to create each of these pizzas.lt simply asked the pizza factory to deliver the type of pizza it wants or to create a type of pizza it wants.so that it can give it to the customer or it can deliver it to the customer. The pizza factory hides the complexity of creating the different types of pizzas from the pizza store.
 
 Sample Code:
-
+```
 public class PizzaFactory {
 
 public static Pizza createPizza(String type) {
@@ -110,6 +99,7 @@ return p;
 }
 
 }
+```
 
 #### Abstract Factory
 
@@ -126,7 +116,7 @@ It simply creates the factory we need. when we have multiple factories we see in
 UML:
 
 Sample Code:
-
+```
 public class DaoFactory Producer {
 
 public static DaoAbstractFactory produce(String factoryType) {
@@ -148,7 +138,7 @@ return daf;
 }
 
 }
-
+```
 #### Flyweight
 
 A flyweight design pattern can be used to save memory. A flyweight is a structural design pattern instead of creating a large number of similar objects. We can reduce the number of objects that are created by reusing the objects and saving memory. Memory is a huge concern especially when it comes to mobile applications with limited memory.
@@ -170,7 +160,7 @@ You will do all that by creating one single circle and one single rectangle he w
 UML:
 
 Sample Code:
-
+```
 public class ShapeFactory (
 
 private static Map<String, Shape> shapes = new HashMap<>();
@@ -205,14 +195,14 @@ return shape;
 }
 
 }
-
+```
 ### Template Method:
 The template method pattern is a behavioural pattern. And as the name itself says it provides a base template method. When we are working with inheritance in our applications we provide a base template method that should be used by the child classes. The child classes can override certain methods but they should use the base template method as is.
 
 For example we have a data renderer class which can read the data, process the data and then render or display that data to the end user.But in our application we want to render the data in the same way no matter in which format the data is coming in that is if it is xml data or if it is CSV data. We want to render it using the render method in the base class reading the data and processing that data is up to the child classes. The child classes can override the readData and the processData.But we want to provide a base template method with all the implementation in it in that data renderer superclass. This pattern is called template method, as we are providing a template for a particular method from the parent class that should be used by the child classes.
 
 Code Sample:
-
+```
 public abstract class DataRenderer{
 public void render(){
 
@@ -229,7 +219,7 @@ public abstract String readData();
 public abstract String processData(String data);
 
 }
-
+```
 #### Adapter
 
 If you have used a power adapter then you already know what an adapter pattern is .The job of a power adapter is to adapt it to a particular location and a particular switchboard. For example the same laptop plug pins that work in USA will not work in UK and in India.We will have to use appropriate power adapter that can take our laptop pins into it and on the other side of it it will have pins that can go into the local countries switchboard and it can also adapt to the appropriate range in that country.
@@ -242,7 +232,7 @@ findWeather. By passing in a city you can get the weather and we have an impleme
 
 That is where an adapter comes in. We will implement an adapter which will take the zip code. The weather Ul will invoke the find Temperature Method on the WeatherAdapter it will pass in the zip code. The weather adapter is responsible for looking up for the
 appropriate city that matches the zip code and hen invoke the weather finder, take the results and return the results back to the weather Ul. So it exactly acts like a power adapter. It takes the inputs from the class that wants to use another class because the inputs here are different from what the other side of the relationship expects.
-
+```
 public class WeatherAdapter {
 
 public int find Temperature(int zipCode) {
@@ -262,7 +252,7 @@ int temperature = finder.find(city);
 return temperature;
 
 }
-
+```
 #### Command
 
 A command design pattern is a behavioural design pattern from that gang of four patterns. It is used to encapsulate a request as an object and pass it to an invoker the invoker doe not know how to service the request from the client. It will take the command and pass it to a receiver who knows how to perform the action typically.
@@ -282,7 +272,7 @@ The person need not touch the television or he need not know how to perform the 
 The receiver here the television can change the implementation of how the on and off should be performed without impacting the remote control and the person.
 
 Sample Code:
-
+```
 public class Remote Control{
 
 private Command command;
@@ -292,19 +282,19 @@ public void pressButton(){
 command.execute();
 
 }
-
+```
 #### Decorator
 
 A decorator pattern is a behavioural pattern that adds additional functionality to an object dynamically at runtime. A decorator wraps an object with additional behaviour without affecting other objects of the same type. The classes in the input output streams in Java use the decorator pattern to read and write files.
 
 For example lets consider a pizza shop. We have a pizza and we have a base pizza. A plain pizza, pizza by itself doesn't mean anything it is very abstract. A plain pizza probably it is just the dove without any cheese or veggies or any meat on it. And now when the client wants a plain pizza or he can ask for a veggie pizza or a cheese pizza or meat pizza
 
-At runtime we can dynamically add all these toppings using a pizza decorator as required. A pizza decorator will be implemented by veggie pizza decorator and a cheese pizza decorator. Each of these bring in additional functionality. So if the client asks for a veggie pizza we are going to use the veggie pizza decorator at run time.
+At runtime, we can dynamically add all these toppings using a pizza decorator as required. A pizza decorator will be implemented by veggie pizza decorator and a cheese pizza decorator. Each of these brings in additional functionality. So if the client asks for a veggie pizza we are going to use the veggie pizza decorator at run time.
 
-The client ask for a cheese pizza. We can ask the cheese pizza decorator to decorate the plain base pizza with cheese and with veggies as required. The pizza here is the component the plain pizza is a concrete or a base component. The decorator is the pizza decorator and these two are concrete decorators. Both the veggie pizza decorator and the cheese pizza decorator are called concrete decorators so you are going to implement all of that in the next few lectures.
+The client asks for a cheese pizza. We can ask the cheese pizza decorator to decorate the plain base pizza with cheese and with veggies as required. The pizza here is the component the plain pizza is a concrete or a base component. The decorator is the pizza decorator and these two are concrete decorators. Both the veggie pizza decorator and the cheese pizza decorator are called concrete decorators so you are going to implement all of that in the next few lectures.
 
-Samle Code:
-
+Sample Code:
+```
 public class PizzaShop{
 
 public static void main(String args[]){
@@ -312,3 +302,4 @@ public static void main(String args[]){
 Pizza pizza = new Veggie PizzaDecorator(new Cheese PizzaDecorator(new PlainPizza())); }
 
 }
+```
