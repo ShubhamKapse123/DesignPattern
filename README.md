@@ -1,6 +1,6 @@
-#### Design Pattern Summary/Review Notes
+## Design Pattern Summary/Review Notes
 
-# Singleton
+#### Singleton
 
 A singleton pattern is an object creational pattern that allows our application to create one and only one instance of a particular class, no matter how many times that class is used in our application.
 
@@ -14,7 +14,7 @@ UML
 
 Sample Code:
 
-public class DateUtil implements Serializable, Cloneable {
+'public class DateUtil implements Serializable, Cloneable {
 
 private static final long serialVersionUID = 1L;
 
@@ -57,9 +57,10 @@ throw new Clone Not SupportedException();
 
 }
 
-}
+}'
 
-Factory
+#### Factory
+
 A factory pattern is a creational pattern that abstracts or hides the object creation process. When you think of factory you can think of a car factory a chocolate factory or a toy factory. A car factory is responsible for manufacturing the cars .A car dealer need not worry about how the car is manufactured. He simply asks the car factory to deliver him some cars. The car factory is responsible for manufacturing them and delivering them to the dealer.
 
 Similarly the Chocolate Factory delivers different types of chocolates based on what the chocolate store asks them to deliver.
@@ -110,7 +111,7 @@ return p;
 
 }
 
-Abstract Factory
+#### Abstract Factory
 
 Now that you have mastered the Factory design pattern learning and implementing the Abstract Factory pattern will be quite easy because an abstract factory is a factory of factories. That is a factory pattern was hiding the details of object creation and factory of factories or an abstract factory.hides the creation of the factory itself.
 
@@ -148,7 +149,7 @@ return daf;
 
 }
 
-Flyweight
+#### Flyweight
 
 A flyweight design pattern can be used to save memory. A flyweight is a structural design pattern instead of creating a large number of similar objects. We can reduce the number of objects that are created by reusing the objects and saving memory. Memory is a huge concern especially when it comes to mobile applications with limited memory.
 
@@ -205,7 +206,7 @@ return shape;
 
 }
 
-Template Method:
+### Template Method:
 The template method pattern is a behavioural pattern. And as the name itself says it provides a base template method. When we are working with inheritance in our applications we provide a base template method that should be used by the child classes. The child classes can override certain methods but they should use the base template method as is.
 
 For example we have a data renderer class which can read the data, process the data and then render or display that data to the end user.But in our application we want to render the data in the same way no matter in which format the data is coming in that is if it is xml data or if it is CSV data. We want to render it using the render method in the base class reading the data and processing that data is up to the child classes. The child classes can override the readData and the processData.But we want to provide a base template method with all the implementation in it in that data renderer superclass. This pattern is called template method, as we are providing a template for a particular method from the parent class that should be used by the child classes.
@@ -229,7 +230,7 @@ public abstract String processData(String data);
 
 }
 
-Adapter
+#### Adapter
 
 If you have used a power adapter then you already know what an adapter pattern is .The job of a power adapter is to adapt it to a particular location and a particular switchboard. For example the same laptop plug pins that work in USA will not work in UK and in India.We will have to use appropriate power adapter that can take our laptop pins into it and on the other side of it it will have pins that can go into the local countries switchboard and it can also adapt to the appropriate range in that country.
 
@@ -262,7 +263,7 @@ return temperature;
 
 }
 
-Command
+#### Command
 
 A command design pattern is a behavioural design pattern from that gang of four patterns. It is used to encapsulate a request as an object and pass it to an invoker the invoker doe not know how to service the request from the client. It will take the command and pass it to a receiver who knows how to perform the action typically.
 
@@ -292,7 +293,7 @@ command.execute();
 
 }
 
-Decorator
+#### Decorator
 
 A decorator pattern is a behavioural pattern that adds additional functionality to an object dynamically at runtime. A decorator wraps an object with additional behaviour without affecting other objects of the same type. The classes in the input output streams in Java use the decorator pattern to read and write files.
 
